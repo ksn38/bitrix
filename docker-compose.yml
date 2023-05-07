@@ -22,12 +22,12 @@ services:
   db:
     image: mysql:8
     container_name: bitrix-db
-    restart: unless-stopped
-#    environment:
-#      POSTGRES_DB: djdb
-#      POSTGRES_USER: ksn38
-#      POSTGRES_PASSWORD: 1
-#    volumes:
+#    restart: unless-stopped
+    environment:
+#      MYSQL_USER: ksn38
+      MYSQL_ROOT_PASSWORD: 1
+#      MYSQL_DATABASE
+#      volumes:
 #      - ./mysql:/var/lib/postgresql/data
 #      - ./backend/psql_dump:/home/ksn38
     networks:
@@ -45,7 +45,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "8080:80"
+      - "8080:8080"
     volumes:
       - ./bitrix:/var/www
       - ./nginx/conf.d:/etc/nginx/conf.d/
