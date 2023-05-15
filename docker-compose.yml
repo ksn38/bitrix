@@ -49,7 +49,7 @@ services:
     volumes:
       - ./bitrix:/var/www
       - ./nginx/conf.d:/etc/nginx/conf.d/
-#      - ./nginx/log:/var/log/nginx/
+      - ./nginx/log:/var/log/nginx/
     networks:
       - bitrix-network
 
