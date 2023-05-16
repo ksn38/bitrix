@@ -13,6 +13,7 @@ services:
     working_dir: /var/www/
     volumes:
       - ./bitrix:/var/www
+      - ./php:/usr/local/etc/php
     networks:
       - bitrix-network
     ports:
