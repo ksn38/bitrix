@@ -1,2 +1,6 @@
-/bitrix/bitrix
-/nginx/log/*
+/bitrix/*
+/logs/nginx/*
+/logs/php/*
+/logs/mysql/*
+/mysql/*
+

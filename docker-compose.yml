@@ -5,7 +5,7 @@ services:
       args:
         user: ksn38
         uid: 1000
-      context: ./bitrix
+      context: .
       dockerfile: Dockerfile
     image: bitrix_8.0
     container_name: bitrix-app
@@ -14,6 +14,7 @@ services:
     volumes:
       - ./bitrix:/var/www
       - ./php:/usr/local/etc/php
+      - ./logs/php:/var/log/php
     networks:
       - bitrix-network
     ports:
@@ -25,11 +26,14 @@ services:
     container_name: bitrix-db
 #    restart: unless-stopped
     environment:
-#      MYSQL_USER: ksn38
+#      MYSQL_DATABASE: ${MYSQL_DATABASE}
+#      MYSQL_USER: ${MYSQL_USER}
+#      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+#      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_ROOT_PASSWORD: 1
-#      MYSQL_DATABASE
-#      volumes:
-#      - ./mysql:/var/lib/postgresql/data
+    volumes:
+      - ./logs/mysql:/var/log/mysql
+      - ./mysql:/var/lib/mysql
 #      - ./backend/psql_dump:/home/ksn38
     networks:
       - bitrix-network
@@ -50,7 +54,7 @@ services:
     volumes:
       - ./bitrix:/var/www
       - ./nginx/conf.d:/etc/nginx/conf.d/
-      - ./nginx/log:/var/log/nginx/
+      - ./logs/nginx:/var/log/nginx/
     networks:
       - bitrix-network
 
