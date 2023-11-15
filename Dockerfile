@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     nano \
     iputils-ping \
     libpq-dev \
+    libjpeg62-turbo-dev \
     libfreetype6-dev \
     && pecl install ds && docker-php-ext-enable ds
 
@@ -24,7 +25,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 
-RUN docker-php-ext-configure gd --with-freetype
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo pdo_mysql mysqli mbstring exif pcntl bcmath gd
