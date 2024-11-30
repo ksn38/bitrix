@@ -7,7 +7,7 @@ services:
         uid: 1000
       context: .
       dockerfile: Dockerfile
-    image: bitrix_8.0
+    image: bitrix_8.1
     container_name: bitrix-app
     restart: unless-stopped
     working_dir: /var/www/
